@@ -4,3 +4,10 @@ server:
 logging:
   level:
     org.springframework: DEBUG
+
+management:
+  endpoint:
+    web:
+      exposure:
+        include: "*"
+#ActuatorºÎºÐ
