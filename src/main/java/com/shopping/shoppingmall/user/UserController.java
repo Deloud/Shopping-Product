@@ -108,18 +108,6 @@ public class UserController {
 //    }
 //    이렇게 해주면 2번 자료가 New User로 바뀜
 
-//    @PutMapping("/users/{id}")
-//    public ResponseEntity<Object> updateStudent(@RequestBody User user, @PathVariable int id) {
-//        Optional<User> userOptional = userRepository.findById(id);
-//
-//        if (!userOptional.isPresent())
-//            return ResponseEntity.notFound().build();
-//
-//        user.setId(id);
-//
-//        userRepository.save(user);
-//
-//        return ResponseEntity.noContent().build();
-//    }
+
 }
 
