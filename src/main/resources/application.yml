@@ -11,3 +11,10 @@ management:
       exposure:
         include: "*"
 #Actuator부분
+
+#spring:
+#  security:
+#    user:
+#      name: capstone
+#      password: capstone
+#아이디 비밀번호
