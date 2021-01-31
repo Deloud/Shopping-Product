@@ -9,7 +9,7 @@ import javax.validation.constraints.*;
 
 @Data
 @AllArgsConstructor
-@JsonFilter("UserInfo")
+//@JsonFilter("UserInfo") //보여주고 싶은 정보만 패키징해서 사용①
 //@JsonIgnoreProperties(value={"phone_number","address","email"}) //일반 유저가 검색하면 이름이랑 id만 보여지게
 public class User {
     private Integer id;

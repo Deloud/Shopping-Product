@@ -3,6 +3,8 @@ package com.shopping.shoppingmall.user;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
+import org.springframework.hateoas.Resource;
+import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +15,9 @@ import java.io.Console;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
+
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 @RestController
 public class UserController {
@@ -41,21 +46,30 @@ public class UserController {
 
     //GET /users/1 or /users/10 or /users/이름
     @GetMapping("/users/{name}") //뒤에 이름 입력하면 그사람 아이디 검색
-    public MappingJacksonValue retrieveUser_name(@PathVariable String name){
+    public Resource<User> retrieveUser(@PathVariable String name){
         User user = service.findOne(name);
 
         if (user ==null){ //존재하지 않는 데이터 추가하면 예외 처리
             throw new UserNotFoundException(String.format("%s is not found",name ));
         }
 
-        SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter
-                .filterOutAllExcept("id","name");
+        //나중에 보여주고 싶은 정보만 보여줄때 사용① public 뒤에 인자 바꿔야댐
+//        SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter
+//                .filterOutAllExcept("id","name");
+//
+//        FilterProvider filters = new SimpleFilterProvider().addFilter("UserInfo",filter); //Filtering
+//
+//        MappingJacksonValue mapping = new MappingJacksonValue(user);
+//        mapping.setFilters(filters);
+//        return mapping;
 
-        FilterProvider filters = new SimpleFilterProvider().addFilter("UserInfo",filter); //Filtering
+        //Hateoas
+        Resource<User> resource = new Resource<>(user);
+        ControllerLinkBuilder linkTo = linkTo(methodOn(this.getClass()).retrieveAllUsers());
 
-        MappingJacksonValue mapping = new MappingJacksonValue(user);
-        mapping.setFilters(filters);
-        return mapping;
+        resource.add(linkTo.withRel("all-users")); //삭제하기나 추가적으로 할 수 있는 기능을 보여줄 수 있음음
+
+       return resource;
     }
 
     @PostMapping("/users") // 유저 추가해주는 것
