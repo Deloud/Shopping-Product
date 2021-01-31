@@ -10,11 +10,18 @@ management:
     web:
       exposure:
         include: "*"
-#Actuator부분
+#Actuator
 
 #spring:
 #  security:
 #    user:
 #      name: capstone
 #      password: capstone
-#아이디 비밀번호
+#Security
+
+jap:
+  show-sql: true
+
+h2:
+  console:
+    enabled: true
