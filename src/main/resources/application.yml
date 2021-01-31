@@ -19,9 +19,11 @@ management:
 #      password: capstone
 #Security
 
-jap:
-  show-sql: true
 
 h2:
   console:
     enabled: true
+
+spring:
+  jpa:
+    show-sql: true
