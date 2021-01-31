@@ -37,13 +37,13 @@ public class AdminUserController {
         return mapping;
     }
 
-    //GET /users/1 or /users/10 ->String
-    @GetMapping("/users/{id}") //뒤에 숫자 입력하면 그사람 아이디 검색
-    public MappingJacksonValue retrieveUser1(@PathVariable String name){
+    //GET /users/1 or /users/10 or /users/이름
+    @GetMapping("/users/{name}") //뒤에 이름 입력하면 그사람 아이디 검색
+    public MappingJacksonValue retrieveUser_name(@PathVariable String name){
         User user = service.findOne(name);
 
         if (user ==null){ //존재하지 않는 데이터 추가하면 예외 처리
-            throw new UserNotFoundException(String.format("ID[%s] not found",name ));
+            throw new UserNotFoundException(String.format("%s is not found",name ));
         }
 
         SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter
