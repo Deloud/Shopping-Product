@@ -11,7 +11,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.*;
+import java.util.List;
 //bd3b0212-7a5a-4c0f-be45-3ac4bd106d83
 
 @Data
@@ -39,4 +41,16 @@ public class User {
     
     @ApiModelProperty(notes = "사용자 이메일을 입력해주세요")
     private String email;
+
+    //1대 다 속성 주기
+    @OneToMany(mappedBy = "user")
+    private List<Post> posts;
+
+    public User(int i, String name, String phone_number, String address, String email) {
+        this.id = id;
+        this.name = name;
+        this.phone_number = phone_number;
+        this.address = address;
+        this.email = email;
+    }
 }
