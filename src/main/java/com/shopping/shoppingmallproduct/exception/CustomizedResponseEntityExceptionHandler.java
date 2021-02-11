@@ -1,6 +1,6 @@
-package com.shopping.shoppingmall.exception;
+package com.shopping.shoppingmallproduct.exception;
 
-import com.shopping.shoppingmall.user.UserNotFoundException;
+import com.shopping.shoppingmallproduct.product.ProductNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +24,7 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
         return new ResponseEntity(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR); //이름
     }
 
-    @ExceptionHandler(UserNotFoundException.class) // 없는 User를 호출하면
+    @ExceptionHandler(ProductNotFoundException.class) // 없는 User를 호출하면
     public final ResponseEntity<Object> handleUserNotFoundException(Exception ex, WebRequest request) {
         ExceptionResponse exceptionResponse =
                 new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));

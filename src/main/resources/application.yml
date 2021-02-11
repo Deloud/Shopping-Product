@@ -1,6 +1,13 @@
 server:
   port: 8088
 
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8090/eureka/
+
 logging:
   level:
     org.springframework: DEBUG
@@ -12,14 +19,6 @@ management:
         include: "*"
 #Actuator
 
-#spring:
-#  security:
-#    user:
-#      name: capstone
-#      password: capstone
-#Security
-
-
 h2:
   console:
     enabled: true
@@ -27,3 +26,6 @@ h2:
 spring:
   jpa:
     show-sql: true
+  application:
+    name: product
+

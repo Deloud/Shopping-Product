@@ -1,6 +1,5 @@
-package com.shopping.shoppingmall.product;
+package com.shopping.shoppingmallproduct.product;
 
-import com.shopping.shoppingmall.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

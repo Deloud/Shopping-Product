@@ -1,62 +1,54 @@
-package com.shopping.shoppingmall.user;
+package com.shopping.shoppingmallproduct.product;
 
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
 @Service
-public class UserDaoService {
-    private static List<User> users = new ArrayList<>();
+public class ProductDaoService {
+    private static List<Product> products = new ArrayList<>();
 
     //유저 수
-    private static int usersCount = 3;
-
-    //유저 정보
-    static{
-            users.add(new User(1,"AAA","01011111111", "우리짐1", "aaaa@naver.com"));
-            users.add(new User(2,"BBB","01022222222", "우리짐2", "bbbb@naver.com"));
-            users.add(new User(3,"CCC","01033333333", "우리짐3", "cccc@naver.com"));
-    }
+    private static int productsCount = 10000;
 
     //유저 정보들 한눈에 보기
-    public List<User> findAll(){
-            return users;
+    public List<Product> findAll(){
+        return products;
     }
 
     //유저 저장하기 - 없으면 추가
-    public User save(User user){
-        if (user.getId() == null){
-            user.setId(++usersCount);
+    public Product save(Product product){
+        if (product.getId() == null){
+            product.setId(++productsCount);
         }
-        users.add(user);
-        return user;
+        products.add(product);
+        return product;
     }
 
     // 이름이나 id로 사람 검색 검색
-    public User findOne(String nameorid){
-        for (User user : users) {
-            if(user.getName().equals(nameorid)){
-                return user;
+    public Product findOne(String nameorid){
+        for (Product product : products) {
+            if(product.getName().equals(nameorid)){
+                return product;
             }
-            if(user.getId() == ATOI(nameorid)){
-                return user;
+            if(product.getId() == ATOI(nameorid)){
+                return product;
             }
         }
         return null;
     }
 
-    public User deleteById(int id){
-        Iterator<User> iterator = users.iterator();
+    public Product deleteById(int id){
+        Iterator<Product> iterator = products.iterator();
 
         while (iterator.hasNext()){
-            User user = iterator.next();
+            Product product = iterator.next();
 
-            if (user.getId() == id){ // 있으면
+            if (product.getId() == id){ // 있으면
                 iterator.remove();
-                return user;
+                return product;
             }
         }
         return null; //없으면 Null 반환
