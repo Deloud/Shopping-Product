@@ -39,7 +39,7 @@ import java.util.*;
 //                .consumes(DEFAULT_PRODUCES_AND_CONSUMES);
 //    }
 //}
-
+ 
 public class SwaggerConfig {
     @Bean
     public Docket api() {
