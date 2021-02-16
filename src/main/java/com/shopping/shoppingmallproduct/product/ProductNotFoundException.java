@@ -1,4 +1,4 @@
-package com.shopping.shoppingmall.user;
+package com.shopping.shoppingmallproduct.product;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 // 5XX -> Server 문제
 
 @ResponseStatus(HttpStatus.NOT_FOUND) //NOT_FOUND 에러가 나오도록 만듬
-public class UserNotFoundException extends RuntimeException {
-    public UserNotFoundException(String message) {
+public class ProductNotFoundException extends RuntimeException {
+    public ProductNotFoundException(String message) {
         super(message);
     }
 }

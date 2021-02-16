@@ -1,6 +1,9 @@
-insert into user values(9001,'AAAAA','01011111111', '우리짐1', 'aaaa@naver.com');
-insert into user values(9002,'BBBBB','01022222222', '우리짐2', 'bbbb@naver.com');
-insert into user values(9003,'CCCCC','01033333333', '우리짐3', 'cccc@naver.com');
+insert into product values(1 ,'Apple',1000);
+insert into product values(2, 'Banana', 2000);
+insert into product values(3, 'cat',30000);
+insert into product values(4, 'onion',4000);
 
-insert into post values(10001, 'my First Post', 9001);
-insert into post values(10002, 'my second Post', 9001);
+-- //1000이 이름, 10000이 가격, count가 3
+
+-- http://localhost:8088/swagger-ui.html#/ --> SWAGGER
+-- http://localhost:8088/h2-console/ --> H2

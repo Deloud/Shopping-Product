@@ -1,4 +1,4 @@
-package com.shopping.shoppingmall;
+package com.shopping.shoppingmallproduct;
 
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
