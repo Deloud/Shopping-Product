@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+
+  postgres:
+    image: postgres
+    healthcheck:
+      test: psql postgres --command "select 1"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: oauth
+      POSTGRES_PASSWORD: oauth123
+      POSTGRES_DB: oauth postgres
+
+      # POSTGRES_USER=oauth -e POSTGRES_PASSWORD=oauth123 -e POSTGRES_DB=oauth postgres
+
+  broker_app:
+    image: dius/pact-broker
+    ports:
+      - "9292:9292"
+    links:
+      - postgres:postgres
+    environment:
+      PACT_BROKER_DATABASE_USERNAME: oauth
+      PACT_BROKER_DATABASE_PASSWORD: oauth123
+      PACT_BROKER_DATABASE_HOST: postgres
+      PACT_BROKER_DATABASE_NAME: oauth pactfoundation/pact-broker

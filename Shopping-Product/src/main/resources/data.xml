@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="resturant1" class="com.shopping.product.product.product.Product">
+        <property name="name">
+            <list>
+                <value>Apple</value>
+                <value>Banana</value>
+                <value>Cat</value>
+                <value>Onion</value>
+            </list>
+        </property>
+
+        <property name="id">
+            <list>
+                <value>1</value>
+                <value>2</value>
+                <value>3</value>
+                <value>4</value>
+            </list>
+        </property>
+
+        <property name="price">
+            <list>
+                <value>1000</value>
+                <value>20000</value>
+                <value>300</value>
+                <value>9000</value>
+            </list>
+        </property>
+
+        <property name="menus">
+            <map>
+                <entry>
+                    <key>
+                        <value>1</value>
+                    </key>
+                    <value>KingCrap</value>
+                </entry>
+                <entry>
+                    <key>
+                        <value>2</value>
+                    </key>
+                    <value>IceCream</value>
+                </entry>
+                <entry>
+                    <key>
+                        <value>3</value>
+                    </key>
+                    <value>Pork</value>
+                </entry>
+            </map>
+        </property>
+    </bean>
+</beans>
