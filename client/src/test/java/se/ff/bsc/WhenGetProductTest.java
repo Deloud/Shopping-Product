@@ -1,6 +1,5 @@
 package se.ff.bsc;
 
-
 import au.com.dius.pact.consumer.Pact;
 import au.com.dius.pact.consumer.PactProviderRuleMk2;
 import au.com.dius.pact.consumer.PactVerification;
@@ -22,7 +21,7 @@ import static org.junit.Assert.assertTrue;
 
 public class WhenGetProductTest {
     @Rule
-    public PactProviderRuleMk2 provider = new PactProviderRuleMk2("ProductService2", "localhost", 8088, this);
+    public PactProviderRuleMk2 provider = new PactProviderRuleMk2("Product3", "localhost", 8088, this);
 
     // pact 정의
     @Pact(consumer = "ProductServiceClient2")
@@ -35,17 +34,7 @@ public class WhenGetProductTest {
                 .integerType("price",1000)
                 .stringValue("name","Apple") // string value까지 확인
                 .asBody();
-                // .stringValue("name","홍길동")
-                // .stringValue("phone_number","01012341234")
-                // .stringValue("address","서울 강남")
-                // .stringValue("email","hong@naver.com")
-        // DslPart etaResults = new PactDslJsonBody()
-        //         .stringType("station","Gangnam") // string 타입인지만 확인
-        //         .stringType("nr","3101")
-        //         .integerType("eta",1)
-        //         .stringType("location","seoul")
-        //         .integerType("price",2000)
-        //         .asBody();
+
 
         return builder
                 .given("Request product information has id 1") // interactions - providerStates - name
@@ -65,8 +54,7 @@ public class WhenGetProductTest {
     public void doTest() {
         System.setProperty("pact.rootDir","../pacts");  // Change output dir for generated pact-files
         Integer eta = new WhenGetProduct(provider.getPort()).checkUser("1");
-        // Integer eta = 10;
-        // assertTrue(eta >= 0);
+
     }
 
 }

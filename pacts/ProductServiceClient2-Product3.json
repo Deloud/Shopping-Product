@@ -1,0 +1,52 @@
+{
+    "provider": {
+        "name": "Product3"
+    },
+    "consumer": {
+        "name": "ProductServiceClient2"
+    },
+    "interactions": [
+        {
+            "description": "A request for product information",
+            "request": {
+                "method": "GET",
+                "path": "/1"
+            },
+            "response": {
+                "status": 200,
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "body": {
+                    "name": "Apple",
+                    "price": 1000
+                },
+                "matchingRules": {
+                    "body": {
+                        "$.price": {
+                            "matchers": [
+                                {
+                                    "match": "integer"
+                                }
+                            ],
+                            "combine": "AND"
+                        }
+                    }
+                }
+            },
+            "providerStates": [
+                {
+                    "name": "Request product information has id 1"
+                }
+            ]
+        }
+    ],
+    "metadata": {
+        "pact-specification": {
+            "version": "3.0.0"
+        },
+        "pact-jvm": {
+            "version": "3.5.10"
+        }
+    }
+}
