@@ -1,8 +1,8 @@
 # Shopping-Product
 
-**[서비스 개요]**  
+MSA 구조에서의 RESTful API - **shopping product** 상품  🚛  <br>
 
-## Getting Started
+## Setting 
 
 Pact broker 설치
 
@@ -19,44 +19,30 @@ $ docker run -d --name pact-broker --link postgres:postgres -p 9292:9292 \
 -e PACT_BROKER_DATABASE_NAME=oauth pactfoundation/pact-broker
 ```
 
-## Running the Contract test
+## Consumer- Provider
 
-### Consumer - Contract test Pact file 생성
+1) consumer : **cart**
+2) provider : **product** 
 
-입력 경로 : /client
+## Test Order 
+
+Provider - Shopping-Product Service Build & Run 
+
+
+1. Service Build
+/Shopping-Product
 ```
 $ mvn install
 ```
 
-### Consumer - Pact file Pact broker에 배포
-
-docker를 통해 실행되고 있는 Pact broker에 Contract가 담긴 Pact file 배포
-
-입력 경로 : /client
-```
-$ mvn pact:publish
-```
-
-### Provider - Shopping-Product Service Build & Run
-
-
-Service Build
-입력 경로 : /Shopping-Product
-```
-$ mvn install
-```
-
-Service Run
-입력 경로 : /Shopping-Product
+2. Service Run
+/Shopping-Product
 ```
 $ java -jar target/*.jar
 ```
 
-### Provider - Contract test
-
-Pact broker에 올라가있는 Contract를 기반으로 Contract test 검증하기
-
-입력 경로 : /Shopping-Product
+3. Consumer-Provider Test verify
+/Shopping-Product
 ```
 $ mvn pact:verify
 ```
