@@ -58,3 +58,5 @@ class Product {
         this.menus = menus;
     }
 }
+
+//"name:" + resturant.getNametoid(id) + ", price:" + resturant.getPricetoid(id) + "
