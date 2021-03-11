@@ -29,20 +29,17 @@ $ docker run -d --name pact-broker --link postgres:postgres -p 9292:9292 \
 Provider - Shopping-Product Service Build & Run 
 
 
-1. Service Build
-/Shopping-Product
+1. Service Build [/Shopping-Product]
 ```
 $ mvn install
 ```
 
-2. Service Run
-/Shopping-Product
+2. Service Run [/Shopping-Product]
 ```
 $ java -jar target/*.jar
 ```
 
-3. Consumer-Provider Test verify
-/Shopping-Product
+3. Consumer-Provider Test verify [/Shopping-Product]
 ```
 $ mvn pact:verify
 ```
