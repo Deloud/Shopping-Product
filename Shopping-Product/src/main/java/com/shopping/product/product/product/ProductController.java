@@ -4,6 +4,8 @@ import net.minidev.json.JSONObject;
 import net.minidev.json.parser.JSONParser;
 import net.minidev.json.parser.ParseException;
 import org.springframework.context.support.GenericXmlApplicationContext;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,8 +22,9 @@ public class ProductController {
 
     GenericXmlApplicationContext ctx = new GenericXmlApplicationContext("data.xml");
     Product resturant = ctx.getBean("resturant1", Product.class);
+    static int count = 0;
 
-//    @GetMapping("")
+    //    @GetMapping("")
 //    public String retrieveAllProducts() {
 //        System.out.println("--- names property ---");
 //        resturant.getName().stream().forEach(System.out::println);
@@ -35,6 +38,18 @@ public class ProductController {
 ////        });
 //        return "test";
 //    }
+    @GetMapping()
+    public ResponseEntity<Integer> home() throws ParseException {
+
+        if (count != 3) {
+            count++;
+            return ResponseEntity.status(HttpStatus.FOUND).body(1);
+
+
+        }
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(count);
+
+    }
 
     @GetMapping("/{id}")
     public JSONObject retrieveProduct(@PathVariable int id) throws ParseException {
