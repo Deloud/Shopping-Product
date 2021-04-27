@@ -43,11 +43,11 @@ public class ProductController {
 
         if (count != 3) {
             count++;
-            return ResponseEntity.status(HttpStatus.FOUND).body(1);
+            return ResponseEntity.status(200).body(1);
 
 
         }
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(count);
+        return ResponseEntity.status(500).body(count);
 
     }
 
