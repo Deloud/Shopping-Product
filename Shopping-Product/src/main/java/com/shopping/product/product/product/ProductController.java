@@ -41,12 +41,12 @@ public class ProductController {
     @GetMapping()
     public ResponseEntity<Integer> home() throws ParseException {
 
-        if (count != 3) {
-            count++;
-            return ResponseEntity.status(200).body(1);
-
-
-        }
+//        if (count != 3) {
+//            count++;
+//            return ResponseEntity.status(200).body(1);
+//
+//
+//        }
         return ResponseEntity.status(500).body(-1);
 
     }
