@@ -16,7 +16,7 @@ spec:
         - name: product-service
           image: kwon5891/product-service:latest
           ports:
-            - containerPort: 8099
+            - containerPort: 8088
           livenessProbe:
             httpGet:
               path: /

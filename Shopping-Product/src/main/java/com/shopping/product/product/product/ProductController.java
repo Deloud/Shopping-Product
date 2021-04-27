@@ -47,7 +47,7 @@ public class ProductController {
 
 
         }
-        return ResponseEntity.status(500).body(count);
+        return ResponseEntity.status(200).body(count);
 
     }
 
