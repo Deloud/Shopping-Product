@@ -38,19 +38,19 @@ public class ProductController {
 ////        });
 //        return "test";
 //    }
-    @GetMapping("/{id}")
+    @GetMapping()
     public ResponseEntity<Integer> home() throws ParseException {
 
         if (count != 3) {
             count++;
-            return ResponseEntity.status(200).body(1);
+            return ResponseEntity.status(500).body(1);
 
         }
-        return ResponseEntity.status(200).body(-1);
+        return ResponseEntity.status(500).body(-1);
 
     }
 
-    @GetMapping()
+    @GetMapping("/{id}")
     public JSONObject retrieveProduct(@PathVariable int id) throws ParseException {
         String output = "{" + "name:" + resturant.getNametoid(id) + ", price:" + resturant.getPricetoid(id) + "}";
 
