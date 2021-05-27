@@ -38,7 +38,7 @@ public class ProductController {
 ////        });
 //        return "test";
 //    }
-    @GetMapping("/{id}")
+    @GetMapping()
     public ResponseEntity<Integer> home() throws ParseException {
 
         if (count != 3) {
@@ -50,7 +50,7 @@ public class ProductController {
 
     }
 
-    @GetMapping()
+    @GetMapping("/{id}")
     public JSONObject retrieveProduct(@PathVariable int id) throws ParseException {
         String output = "{" + "name:" + resturant.getNametoid(id) + ", price:" + resturant.getPricetoid(id) + "}";
 
